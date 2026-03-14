@@ -72,5 +72,5 @@ def load_train_and_test_pickle(file_name):
 
 # returns the feature set in a numpy ndarray
 def load_CSV(filename):
-    stuff = np.asarray(np.loadtxt(open(filename, 'rb'), delimiter=','))
+    stuff = np.asarray(np.loadtxt(filename, delimiter=','))
     return stuff
