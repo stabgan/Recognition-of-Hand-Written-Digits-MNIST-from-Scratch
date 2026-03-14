@@ -28,8 +28,6 @@ def polynomial_kernel(X, Y, c, p):
             exp = (np.matmul(X[i],Y[j]) + c) ** p
             ans[i,j] = exp
     return ans
-    raise NotImplementedError
-
 
 
 def rbf_kernel(X, Y, gamma):
@@ -55,4 +53,3 @@ def rbf_kernel(X, Y, gamma):
             exp = np.exp(-gamma * (np.linalg.norm(X[i] - Y[j]) ** 2))
             ans[i,j] = exp
     return ans
-    raise NotImplementedError
