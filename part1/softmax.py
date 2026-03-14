@@ -4,7 +4,7 @@ import utils
 from utils import *
 import numpy as np
 import matplotlib.pyplot as plt
-
+import scipy.sparse as sparse
 
 
 def augment_feature_vector(X):
@@ -61,7 +61,7 @@ def compute_cost_function(X, Y, theta, lambda_factor, temp_parameter):
     hot_one_encode_mask = np.transpose((np.eye(k)[Y]))
 
     n = X.shape[0]
-    loss = (-1.0/n) * np.nansum(np.log(probabilities[hot_one_encode_mask.astype(bool)])) 
+    loss = (-1.0/n) * np.nansum(np.log(probabilities[hot_one_encode_mask.astype(np.bool)])) 
 
     regularization = (lambda_factor / 2) * (np.sum(np.square(theta)))
     return loss + regularization
@@ -115,6 +115,7 @@ def update_y(train_y, test_y):
                     for each datapoint in the test set
     """
     return (train_y%3,test_y%3)
+    raise NotImplementedError
 
 def compute_test_error_mod3(X, Y, theta, temp_parameter):
     """
@@ -132,6 +133,7 @@ def compute_test_error_mod3(X, Y, theta, temp_parameter):
         test_error - the error rate of the classifier (scalar)
     """
     return np.mean(get_classification(X, theta, temp_parameter)%3 != Y)
+    raise NotImplementedError
 
 def softmax_regression(X, Y, temp_parameter, alpha, lambda_factor, k, num_iterations):
     """
